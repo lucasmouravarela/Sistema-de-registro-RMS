@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.ghostWhite {
+    filter: invert(92%) sepia(66%) saturate(5848%) hue-rotate(180deg) brightness(107%) contrast(112%);
+}
+
+.container-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5%;
+    color: #f8f8ff;
+    background-color: #111b35;
+}
+
+.container-top>img {
+    max-width: 100%;
+    height: 55px;
+}
+
+main {
+    padding: 4%;
+    margin: 4%;
+    box-shadow: 1px 1px 10px;
+    border-radius: 1%;
+    
+}
+
+.pagination{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    align-items: center;
+    
+    
+    
+}
+.pagination span{
+    cursor: pointer;
+    min-width: 35px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    background: #111b35;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px 4px 4px 4px;
+    transition: 0.5s all;
+    
+}
+.pagination span:hover{
+    background: rgba(3, 17, 97, 0.822)    
+}
+
+.pagination span:active{
+    transform: scale(0.90);
+    box-shadow: 3px 5px 22px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: flex-start;
+}
+
+.table-container>table {
+    font-size: 18px;
+    width: 100%;
+    user-select: none;
+    text-align: center;
+}
+
+tr>th {
+    height: 40px;
+    color: #f8f8ff;
+    background-color: #111b35;
+    padding-left: 10px;
+}
+
+tr>td {
+    padding-left: 10px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+  }
+
+@media not (min-width:768px) {
+    header {
+        padding: 5%;
+        font-size: 70%;
+        text-align: center;
+    }
+
+   
+}
+
