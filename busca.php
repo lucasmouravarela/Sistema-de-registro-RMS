@@ -76,7 +76,7 @@ if ($op == "searchData"){
         <div class="pagination">';
 
         if ($p > 3) {
-            echo '<span id="previous" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\'1\',\'\',\'corpoTabela\');">Primeira página</span>';
+            echo '<ul><li id="previous" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\'1\',\'\',\'corpoTabela\');">Primeira página</li></ul>';
         } else{
             echo '';
         }
@@ -89,11 +89,11 @@ if ($op == "searchData"){
                 // Se estiver tudo OK, cria o link para outra página
             } 
             else {
-                    echo '<a href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$i.'\',\'\',\'corpoTabela\');"  target="_self"><span id="pagina">'.$i.'</span> </a>';
+                    echo '<ul><li id="pagina"><a href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$i.'\',\'\',\'corpoTabela\');"  target="_self">'.$i.'</a></li></ul> ';
                 }
         }
             
-        echo '<span id="pagina">'.$p.'</span>';
+        echo '<ul><li id="pagina">'.$p.'</li></ul>';
 
         // Cria outro for(), desta vez para exibir 3 links após a página atual
         for($i = $p+1; $i <= $p+$max_links; $i++) {
@@ -105,7 +105,7 @@ if ($op == "searchData"){
             // Se tiver tudo Ok gera os links.
             else
             {
-                echo'<a href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$i.'\',\'\',\'corpoTabela\');"  target="_self"><span id="pagina" >'.$i.'</span></a> ';
+                echo'<ul><li id="pagina" ><a href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$i.'\',\'\',\'corpoTabela\');"  target="_self">'.$i.'</a></li></ul> ';
             }
         }
 
@@ -113,7 +113,7 @@ if ($op == "searchData"){
         if (($pags == $p) || ($pags < 3)) {
           echo "";   
        } else{
-         echo '<span id="last"><a  href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$pags.'\',\'\',\'corpoTabela\');">Ultima página</a> </span>';
+         echo '<ul><li id="last"><a  href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$pags.'\',\'\',\'corpoTabela\');">Ultima página</a> </li></ul>';
         }
 
         echo'

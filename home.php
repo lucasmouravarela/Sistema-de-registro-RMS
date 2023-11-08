@@ -114,7 +114,7 @@
                             <div class="pagination">';
 
                             if ($p>=3) {
-                                echo '<a href="home.php?p=1" target="_self"><span id="previous" onclick="paginaAnterior()">Primeira página</span></a>';
+                                echo '<ul><li id="previous" onclick="paginaAnterior()"><a href="home.php?p=1" target="_self">Primeira página</a></li></ul>';
                             } else{
                                 echo '';
                             }
@@ -127,11 +127,11 @@
                                     // Se estiver tudo OK, cria o link para outra página
                                 } 
                                 else {
-                                        echo '<a href="home.php?p='.$i.'" target="_self"><span id="pagina">'.$i.'</span></a> ';
+                                        echo '<ul><li id="pagina"><a href="home.php?p='.$i.'" target="_self">'.$i.'</a></li></ul>';
                                     }
                             }
                                 
-                            echo '<span id="pagina">'.$p.'</span>';
+                            echo '<ul><li id="pagina">'.$p.'</li></ul>';
 
                             // Cria outro for(), desta vez para exibir 3 links após a página atual
                             for($i = $p+1; $i <= $p+$max_links; $i++) {
@@ -143,12 +143,12 @@
                                 // Se tiver tudo Ok gera os links.
                                 else
                                 {
-                                    echo'<a href="home.php?p='.$i.'" target="_self"><span id="pagina">'.$i.'</span></a> ';
+                                    echo'<ul><li id="pagina"><a href="home.php?p='.$i.'" target="_self">'.$i.'</a></li></ul>';
                                 }
                             }
 
                             echo'
-                            <span id="last" onclick="irParaUltimaPagina()"><a href="home.php?p='.$pags.'" target="_self">Ultima página</a> </span>
+                            <ul><li id="last" onclick="irParaUltimaPagina()"><a href="home.php?p='.$pags.'" target="_self">Ultima página</a></li></ul>
                             </div>
                             </td></tr>';   
                         ?>

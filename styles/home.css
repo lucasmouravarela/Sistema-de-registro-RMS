@@ -39,7 +39,7 @@ main {
     
     
 }
-.pagination span{
+.pagination ul{
     cursor: pointer;
     min-width: 35px;
     padding: 5px 10px;
@@ -56,13 +56,16 @@ main {
     color: #fff;
     display: block;
     
+}
+ul{
+    list-style-type: none;
     
 }
-.pagination span:hover{
+.pagination ul:hover{
     background: rgba(3, 17, 97, 0.822)    
 }
 
-.pagination span:active{
+.pagination ul:active{
     transform: scale(0.90);
     
     box-shadow: 3px 5px 22px 1px rgba(65, 62, 62, 0.2);
