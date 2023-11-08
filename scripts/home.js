@@ -41,3 +41,4 @@ function insertData(event) {
 mostrarModal.addEventListener('click', showModal);
 closeModalButton.addEventListener('click', closeModal);
 insertButton.addEventListener('click', insertData);
+

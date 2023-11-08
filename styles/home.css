@@ -51,13 +51,21 @@ main {
     transition: 0.5s all;
     
 }
+.pagination a{
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    
+    
+}
 .pagination span:hover{
     background: rgba(3, 17, 97, 0.822)    
 }
 
 .pagination span:active{
     transform: scale(0.90);
-    box-shadow: 3px 5px 22px 1px rgba(0, 0, 0, 0.2);
+    
+    box-shadow: 3px 5px 22px 1px rgba(65, 62, 62, 0.2);
 }
 
 

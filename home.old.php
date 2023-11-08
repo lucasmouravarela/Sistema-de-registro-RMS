@@ -22,15 +22,14 @@
                 <img src="./images/Logotipo_RMS.png" alt="Logotipo RMS" class="ghostWhite">
             </div>
         </header>
- 
+        <div>
+            <input type="search" onkeyup="searchData()" id="nome" placeholder="Pesquisar">
+            <!-- <button name="pesquisar" onclick="searchData()"><i class="fa-solid fa-magnifying-glass"></i></button> -->
+            <button id="mostrar-modal-botao"><i class="fa-solid fa-plus"></i></button>
+        </div>
         <main>
             <div class="container-form">
-                <div>
-                    <input type="search" onkeyup="get_element_info('searchData',this.value,'','','corpoTabela');" name="nome" id="nome" placeholder="Pesquisar">
-
-                    <!-- <button name="pesquisar" onclick="searchData()"><i class="fa-solid fa-magnifying-glass"></i></button> -->
-                    <button id="mostrar-modal-botao"><i class="fa-solid fa-plus"></i></button>
-                </div>
+                
                 <br>
                 <div class="modal" id="modal">
                     <form id="form" method="POST" action="">
@@ -77,7 +76,7 @@
                             // (página atual * quantidade por página) - quantidade por página
                             $inicio = ($p*$qnt) - $qnt;
                             // Seleciona no banco de dados com o LIMIT indicado pelos números acima
-                            $query = "SELECT * FROM registro_psts ORDER BY nome ASC LIMIT $inicio, $qnt ";
+                            $query = "SELECT * FROM registro_psts LIMIT $inicio, $qnt";
 
                             $result = mysqli_query($conexao, $query);
                                 if (mysqli_num_rows($result) > 0) {
@@ -87,13 +86,13 @@
                                         echo "<td>" . $row['nome'] . "</td>";
                                         echo "<td>" . date('d/m/Y', strtotime($row['data_bkp'])) . "</td>";
                                         echo "<td>" . intval($row['hd']) . "</td>";
-                                        // echo "<td> 
-                                        // <a class='btn btn-sm btn-primary' href='#' onclick='editarRegistro(" . $row['id'] . ")'>
-                                        // <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>
-                                        // <path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
-                                        // </svg>
-                                        // </a>
-                                        // </td>"; // Substitua por suas ações de edição/exclusão
+                                         echo "<td> 
+                                        <a class='btn btn-sm btn-primary' href='#' onclick='editarRegistro(" . $row['id'] . ")'>
+                                        <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>
+                                        <path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
+                                        </svg>
+                                        </a>
+                                        </td>"; // Substitua por suas ações de edição/exclusão
                                         echo "</tr>";
                                     }
                                     
@@ -113,12 +112,11 @@
                             echo '<tr><td colspan="5">
                             <div class="pagination">';
 
-                            if ($p>=3) {
+                            if ($p>=4) {
                                 echo '<a href="home.php?p=1" target="_self"><span id="previous" onclick="paginaAnterior()">Primeira página</span></a>';
                             } else{
                                 echo '';
                             }
-
                            for($i = $p-$max_links; $i <= $p-1; $i++) {
                                 // Se o número da página for menor ou igual a zero, não faz nada
                                 // (afinal, não existe página 0, -1, -2..)
