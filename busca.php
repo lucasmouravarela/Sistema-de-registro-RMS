@@ -1,3 +1,4 @@
+
 <?php
 include_once('conexao.php');
 
@@ -76,7 +77,7 @@ if ($op == "searchData"){
         <div class="pagination">';
 
         if ($p > 3) {
-            echo '<ul><li id="previous" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\'1\',\'\',\'corpoTabela\');">Primeira página</li></ul>';
+            echo '<li id="previous" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\'1\',\'\',\'corpoTabela\');">Primeira página</li></ul>';
         } else{
             echo '';
         }

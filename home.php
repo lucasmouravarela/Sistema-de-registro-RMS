@@ -113,7 +113,7 @@
                             echo '<tr><td colspan="5">
                             <div class="pagination">';
 
-                            if ($p>=3) {
+                            if ($p>=4) {
                                 echo '<ul><li id="previous" onclick="paginaAnterior()"><a href="home.php?p=1" target="_self">Primeira página</a></li></ul>';
                             } else{
                                 echo '';
@@ -127,11 +127,13 @@
                                     // Se estiver tudo OK, cria o link para outra página
                                 } 
                                 else {
-                                        echo '<ul><li id="pagina"><a href="home.php?p='.$i.'" target="_self">'.$i.'</a></li></ul>';
+                                        $class = ($i == $p) ? 'active' : '';
+                                        echo '<ul><li id="pagina" class="'.$class.'"><a href="home.php?p='.$i.'" target="_self">'.$i.'</a></li></ul>';
                                     }
                             }
-                                
-                            echo '<ul><li id="pagina">'.$p.'</li></ul>';
+                            // Botão da página atual com a classe "active"
+
+                            echo '<ul><li id="pagina" class="active">'.$p.'</li></ul>';
 
                             // Cria outro for(), desta vez para exibir 3 links após a página atual
                             for($i = $p+1; $i <= $p+$max_links; $i++) {
@@ -143,14 +145,26 @@
                                 // Se tiver tudo Ok gera os links.
                                 else
                                 {
-                                    echo'<ul><li id="pagina"><a href="home.php?p='.$i.'" target="_self">'.$i.'</a></li></ul>';
+                                    // Adiciona a classe "active" se a página for a atual
+                                    $class = ($i == $p) ? 'active' : '';
+                                    echo'<ul><li id="pagina" class="'.$class.'"><a href="home.php?p='.$i.'" target="_self">'.$i.'</a></li></ul>';
                                 }
                             }
 
-                            echo'
+                            // echo'
+                            // <ul><li id="last" onclick="irParaUltimaPagina()"><a href="home.php?p='.$pags.'" target="_self">Ultima página</a></li></ul>
+                            // </div>
+                            // </td></tr>';  
+                            // $ult_p = $p + $max_links;
+                            if ((($p + $max_links) >= $pags) || ($pags < 3)) {
+                                echo "";   
+                             } else{
+                               
+                               echo'
                             <ul><li id="last" onclick="irParaUltimaPagina()"><a href="home.php?p='.$pags.'" target="_self">Ultima página</a></li></ul>
                             </div>
-                            </td></tr>';   
+                            </td></tr>';
+                              } 
                         ?>
                     </tbody>
                 </table>
@@ -158,9 +172,11 @@
         </main>
     </div>
 <script src="./scripts/home.js"></script>
+
 <script>
     var numero_de_paginas = <?= $numero_de_paginas ?>;
 </script>
+
 </body>
  
 </html>

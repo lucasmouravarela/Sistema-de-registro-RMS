@@ -42,7 +42,6 @@ main {
 .pagination ul{
     cursor: pointer;
     min-width: 35px;
-    padding: 5px 10px;
     margin-right: 5px;
     background: #111b35;
     color: #fff;
@@ -57,8 +56,11 @@ main {
     display: block;
     
 }
-ul{
+ul>li{
     list-style-type: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    
     
 }
 .pagination ul:hover{
@@ -67,10 +69,13 @@ ul{
 
 .pagination ul:active{
     transform: scale(0.90);
-    
     box-shadow: 3px 5px 22px 1px rgba(65, 62, 62, 0.2);
 }
 
+.active{
+    background-color: rgba(12, 161, 161, 0.822); 
+    cursor: default;
+}
 
 .table-container {
     display: flex;
