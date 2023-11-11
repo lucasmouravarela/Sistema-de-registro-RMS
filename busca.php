@@ -48,6 +48,7 @@ if ($op == "searchData"){
                 echo "<tr>";
                 echo "<td>" . $row['id'] . "</td>";
                 echo "<td>" . $row['nome'] . "</td>";
+                echo "<td>" . $row['cargo'] . "</td>";
                 echo "<td>" . date('d/m/Y', strtotime($row['data_bkp'])) . "</td>";
                 echo "<td>" . intval($row['hd']) . "</td>";
                 echo "<td> 
@@ -63,7 +64,7 @@ if ($op == "searchData"){
             echo '<tr><td colspan="5">Registro não encontrado.</td></tr>';
         }
 
-                echo '<tr><td colspan="5"><br><hr><br></td></tr>';
+            echo '<tr><td colspan="6"><br><hr><br></td></tr>';
         $queryAll = "SELECT * FROM registro_psts WHERE nome LIKE '%$arg1%' ";
         $result2 = mysqli_query($conexao, $queryAll);
         $total_registros = mysqli_num_rows($result2);
@@ -77,7 +78,7 @@ if ($op == "searchData"){
         <div class="pagination">';
 
         if ($p > 3) {
-            echo '<li id="previous" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\'1\',\'\',\'corpoTabela\');">Primeira página</li></ul>';
+            echo '<ul><li id="previous"><a  href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\'1\',\'\',\'corpoTabela\');">Primeira página</a> </li></ul>';
         } else{
             echo '';
         }
@@ -90,11 +91,12 @@ if ($op == "searchData"){
                 // Se estiver tudo OK, cria o link para outra página
             } 
             else {
-                    echo '<ul><li id="pagina"><a href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$i.'\',\'\',\'corpoTabela\');"  target="_self">'.$i.'</a></li></ul> ';
+                    $class = ($i == $p) ? 'active' : '';
+                    echo '<ul><li id="pagina" class="'.$class.'"><a href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$i.'\',\'\',\'corpoTabela\');"  target="_self">'.$i.'</a></li></ul> ';
                 }
         }
             
-        echo '<ul><li id="pagina">'.$p.'</li></ul>';
+        echo '<ul><li id="pagina" class="active">'.$p.'</li></ul>';
 
         // Cria outro for(), desta vez para exibir 3 links após a página atual
         for($i = $p+1; $i <= $p+$max_links; $i++) {
@@ -105,8 +107,9 @@ if ($op == "searchData"){
             }
             // Se tiver tudo Ok gera os links.
             else
-            {
-                echo'<ul><li id="pagina" ><a href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$i.'\',\'\',\'corpoTabela\');"  target="_self">'.$i.'</a></li></ul> ';
+            {   
+                $class = ($i == $p) ? 'active' : '';
+                echo'<ul><li id="pagina" class="'.$class.'"><a href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$i.'\',\'\',\'corpoTabela\');"  target="_self">'.$i.'</a></li></ul> ';
             }
         }
 
@@ -114,7 +117,7 @@ if ($op == "searchData"){
         if (($pags == $p) || ($pags < 3)) {
           echo "";   
        } else{
-         echo '<ul><li id="last"><a  href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$pags.'\',\'\',\'corpoTabela\');">Ultima página</a> </li></ul>';
+         echo '<ul><li id="last"><a  href="#" onClick="get_element_info(\'searchData\',\''.$arg1.'\',\''.$pags.'\',\'\',\'corpoTabela\');">Última página</a> </li></ul>';
         }
 
         echo'

@@ -18,6 +18,7 @@ function closeModal() {
 function insertData(event) {
     event.preventDefault();
     const nome = document.getElementById('nomeModal').value;
+    const cargo = document.getElementById('cargo').value;
     const data = document.getElementById('data').value;
     const hd = document.getElementById('hd').value;
 
@@ -25,6 +26,7 @@ function insertData(event) {
     newRow.innerHTML = `
         <td>${rowIndex}</td>
         <td>${nome}</td>
+        <td>${cargo}</td>
         <td>${data}</td>
         <td>${hd}</td>
         <td>

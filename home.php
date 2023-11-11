@@ -18,32 +18,51 @@
     <div>
         <header>
             <div class="container-top">
+                <a href="index.php"><img src="./images/Logotipo_RMS.png" alt="Logotipo RMS" class="ghostWhite"> </a>
+                
                 <h1>Biblioteca de Informações de Backups</h1>
-                <img src="./images/Logotipo_RMS.png" alt="Logotipo RMS" class="ghostWhite">
             </div>
         </header>
  
         <main>
             <div class="container-form">
                 <div>
-                    <input type="search" onkeyup="get_element_info('searchData',this.value,'','','corpoTabela');" name="nome" id="nome" placeholder="Pesquisar">
+                    <input class="input-search" type="search" onkeyup="get_element_info('searchData',this.value,'','','corpoTabela');" name="nome" id="nome" placeholder="Pesquisar">
 
                     <!-- <button name="pesquisar" onclick="searchData()"><i class="fa-solid fa-magnifying-glass"></i></button> -->
-                    <button id="mostrar-modal-botao"><i class="fa-solid fa-plus"></i></button>
+                    <button class="mostrar-modal-botao"id="mostrar-modal-botao">Adicionar</button>
                 </div>
                 <br>
                 <div class="modal" id="modal">
                     <form id="form" method="POST" action="">
-                    <label for="nomeModal">Nome:</label>
-                    <input type="text" id="nomeModal" name="nome" required><br><br>
-                    <label for="data">Data:</label>
-                    <input type="date" id="data" name="data_bkp" required><br><br>
-                    <label for="hd">HD:</label>
-                    <input type="text" id="hd" name="hd" required><br><br>
-                    <input type="submit" name="submit" id="submit">
-                    <!--<button type="submit" name="submit" id="submit">Inserir</button> -->
+                        <div class="div-titulo-modal"><label id="titulo-modal"for="">Registro de Dados</label></div>
+                        <div class="div-input-nome">
+                            <label for="nomeModal">Nome:</label>
+                            <input class="input-modal-nome" type="text" id="nomeModal" name="nome" required><br><br>
+                        </div>
+                        <div class="div-input-date-hd">
+                            <label for="data">Data:</label>
+                            <input class="input-modal-data" type="date" id="data" name="data_bkp" required>
+                            <label for="hd">HD:</label>
+                            <input class="input-modal-hd" type="text" id="hd" name="hd" required>
+                        </div>
+                        <div class="div-select">
+                            <label for="cargo">Cargo:</label>
+                            <select name="cargo" id="cargo" required>
+                                <option value="" selected> ------------</option>
+                                <option value="Funcioário">Funcionário</option>
+                                <option value="Advogado(a)">Advogado(a)</option>
+                            </select>
+                            
+                        </div>
+                        <div class="div-btn-modal">
+                            <input class="enviar" type="submit" name="submit" id="submit">
+                            <button class="cancelar"id="closeModal">Cancelar</button>
+                        </div>
+                    
+                    
                     </form>
-                    <button id="closeModal">Fechar Modal</button>
+                    
                 </div>
             </div>
             <div class="table-container">
@@ -52,6 +71,7 @@
                         <tr>
                             <th>ID</th>
                             <th>NOME</th>
+                            <th>CARGO</th>
                             <th>DATA</th>
                             <th>HD</th>
                             <th>Ações</th>
@@ -85,6 +105,7 @@
                                         echo "<tr>";
                                         echo "<td>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['nome'] . "</td>";
+                                        echo "<td>" . $row['cargo'] . "</td>";
                                         echo "<td>" . date('d/m/Y', strtotime($row['data_bkp'])) . "</td>";
                                         echo "<td>" . intval($row['hd']) . "</td>";
                                         // echo "<td> 
@@ -100,7 +121,7 @@
                                 } else{
                                     echo '<tr><td colspan="5">Registro não encontrado.</td></tr>';
                                 }
-                                    echo '<tr><td colspan="5"><br><hr><br></td></tr>';
+                                    echo '<tr><td colspan="6"><br><hr><br></td></tr>';
                             $queryAll = "SELECT * FROM registro_psts";
                             $result2 = mysqli_query($conexao, $queryAll);
                             $total_registros = mysqli_num_rows($result2);
@@ -161,7 +182,7 @@
                              } else{
                                
                                echo'
-                            <ul><li id="last" onclick="irParaUltimaPagina()"><a href="home.php?p='.$pags.'" target="_self">Ultima página</a></li></ul>
+                            <ul><li id="last" onclick="irParaUltimaPagina()"><a href="home.php?p='.$pags.'" target="_self">Última página</a></li></ul>
                             </div>
                             </td></tr>';
                               } 
@@ -190,9 +211,10 @@ include_once('conexao.php');
         // include_once('conexao.php');
  
         $nome = $_POST['nome'];
+        $cargo = $_POST['cargo'];
         $data = $_POST['data_bkp'];
         $hd = $_POST['hd'];
-        $result = mysqli_query($conexao, "INSERT INTO registro_psts(nome, data_bkp, hd, data_hora_registro) VALUES ('$nome','$data','$hd',NOW())");
+        $result = mysqli_query($conexao, "INSERT INTO registro_psts(nome, cargo, data_bkp, hd, data_hora_registro) VALUES ('$nome','$cargo','$data','$hd',NOW())");
         //$query = "INSERT INTO registro_psts (nome,data_bkp,hd) VALUES ('$nome','$data','$hd')";
         //$result = mysqli_query($conexao, $query);
  
